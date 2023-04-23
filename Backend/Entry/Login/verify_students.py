@@ -1,8 +1,11 @@
 import mysql.connector as sql
 
-conn = sql.connect(host='localhost', password='example-password',
-                                 user='abstract-programmer',
-                                 database = 'Student_verification')
+conn = sql.connect(
+    host='localhost', 
+    password='example-password',
+    user='abstract-programmer',
+    database = 'Student_verification'
+    )
 
 cursor = conn.cursor()
 
