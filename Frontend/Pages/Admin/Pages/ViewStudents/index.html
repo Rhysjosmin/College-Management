@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 </head>
+
 <body>
-    
+    <section id="Students"></section>
+
+    <template id="StudentTemplate">
+        <div>
+            <span id="RollNumber"></span>
+            <span id="Name"></span>
+            <span id="Year"></span>
+            <span id="Department"></span>
+            <span id="Mentor"></span>
+        </div>
+    </template>
 </body>
 <script src="/Frontend/Scripts/Config.js"></script>
 <script>
-    StudentArray=[]
-fetch(SERVER_URL+'/Student/List')
-.then(response=>response.json())
-.then(data=>console.log(data))
+
+    const Students = document.getElementById('Students')
+    StudentTemplate = document.getElementById('StudentTemplate')
+
+
+    StudentArray = [];
+    fetch(SERVER_URL + "/Student/List")
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach((element) => {
+                content = StudentTemplate.content.cloneNode(true)
+
+                content.getElementById('RollNumber').innerText = element[0]
+                content.getElementById('Name').innerText =element[1]
+                content.getElementById('Year').innerText = element[2]
+                content.getElementById('Department').innerText = element[3]
+                content.getElementById('Mentor').innerText = element[4]
+                Students.appendChild(content)
+
+            });
+        });
 </script>
+
 </html>
