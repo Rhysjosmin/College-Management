@@ -9,7 +9,7 @@ conn = sql.connect(
 
 cursor = conn.cursor()
 
-query = "SELECT * FROM verify_students WHERE Department = 'Computer'"
+query = "SELECT * FROM Verify_Details WHERE Department = 'Computer'"
 cursor.execute(query)
 
 
