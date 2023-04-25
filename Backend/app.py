@@ -10,3 +10,4 @@ app.register_blueprint(Admin,url_prefix='/Admin')
 
 if __name__ =="__main__":
     app.run(debug=True)
+
