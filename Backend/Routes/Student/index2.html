@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Template Example</title>
+</head>
+
+<body>
+    <template id="template">
+        <div class="user">
+            <h2 class="name"></h2>
+            <p class="email"></p>
+        </div>
+    </template>
+
+    <script>
+        var template = document.getElementById('template');
+        var clone = template.content.cloneNode(true);
+
+        var jsonData = {
+            name: "John Doe",
+            email: "2113902@dbcegoa.ac.in",
+            mentor: "Rhys Josmin Rodrigues",
+            cgpa: '9.9',
+            rollnumber: '2113902'
+        };
+
+        clone.querySelector('.name').textContent = jsonData.name;
+        clone.querySelector('.email').textContent = jsonData.email;
+        clone.querySelector('.mentor').textContent = jsonData.mentor;
+        clone.querySelector('.cgpa').textContent = jsonData.cgpa;
+        clone.querySelector('.rollnumber').textContent = jsonData.rollnumer;
+
+
+        document.body.appendChild(clone);
+    </script>
+</body>
+
+</html>

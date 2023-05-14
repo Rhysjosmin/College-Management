@@ -1,7 +1,8 @@
-from flask import Flask,Blueprint,jsonify
-import mysql.connector as SQL
+from flask import Blueprint
+import mysql.connector
 
-Login = Blueprint('Login', __name__)
+Login=Blueprint('Login',__name__)
+
 
 @Login.route('/<StudentName>/<RollNumber>/', methods=['GET'])
 def Login(StudentName, RollNumber):
@@ -16,10 +17,9 @@ def Login(StudentName, RollNumber):
     result = cursor.fetchall()
 
     if result:
-         print(jsonify({'found':True}))
-         print(result)
+         return({'found':True})
+
     else:
-        print(jsonify({'found':False}))
+        return({'found':False})
 
-
-    
+        

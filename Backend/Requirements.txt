@@ -2,3 +2,4 @@
 mysqlclient
 flask
 pandas
+flask-cors
