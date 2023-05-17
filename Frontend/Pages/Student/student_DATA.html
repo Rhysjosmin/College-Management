@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .search-bar{
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"]{
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        @media (max-width: 480px) {
+            table, th, td {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Information</h1>
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search by: ">
+  </div> 
+    <table id="student-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>RollNumber</th>
+                <th>EmailID</th>
+                <th>Mentor</th>
+                <th>CGPA</th>
+            </tr>
+        </thead>
+        <tbody id="student-table-body"></tbody>
+    </table>
+    <div id="search-results"></div>
+    <script>
+        fetch('students_data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const studentTableBody = document.getElementById('student-table-body');
+                    const searchInput = document.getElementById('search-input');
+                    const searchResults = document.getElementById('search-results');
+
+                    // Populate the table with initial data
+                    populateTable(data);
+
+                    // Add event listener for search input
+                    searchInput.addEventListener('input', function () {
+                        const searchQuery = searchInput.value.trim().toLowerCase();
+                        const NameVar = data.filter(student => student.Name.toLowerCase().includes(searchQuery));
+                        populateTable(NameVar);
+                    });
+                    function populateTable(data) {
+                        studentTableBody.innerHTML = '';
+
+                        data.forEach(student => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `<td>${student.Name}</td><td>${student.Department}</td><td>${student.RollNumber}</td><td>${student.EmailID}</td><td>${student.Mentor}</td><td>${student.CGPA}</td>`;
+                            studentTableBody.appendChild(row);
+
+                            // Add click event listener to the row
+                            row.addEventListener('click', function () {
+                                // Perform action when the row is clicked
+                                console.log(`Clicked on student: ${student.Name}`);
+                                // You can modify this action to suit your requirements
+                            });
+                        });
+                    }
+
+                })
+
+            .catch(error => console.log('Error loading student data:', error));
+                    
+                    /* function displaySearchQuery(searchQuery) {
+                        if (searchQuery) {
+                            searchResults.textContent = `Search results for: ${searchQuery}`;
+                        } else {
+                            searchResults.textContent = '';
+                        }
+                    } */
+    </script>
+</body>
+</html>
+
+
+
