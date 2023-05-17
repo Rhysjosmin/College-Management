@@ -1,0 +1,146 @@
+[
+    {
+        "Name": "Nathan Ferrao",
+        "RollNumber": 2114031,
+        "Department": "Computer Engineering",
+        "CGPA": 8.23,
+        "EmailID": "2114031@dbcegoa.ac.in",
+        "Mentor": "Norman Dias"
+    },
+    {
+        "Name": "Samuel Thomas Mesquita",
+        "RollNumber": 2114044,
+        "Department": "Computer Engineering",
+        "CGPA": 7.5,
+        "EmailID": "2114044@dbcegoa.ac.in",
+        "Mentor": "Ankit Tiwari"
+    },
+    {
+        "Name": "Warren D'Souza",
+        "RollNumber": 2214070,
+        "Department": "Mechanical Engineering",
+        "CGPA": 6.5,
+        "EmailID": "2214070@dbcegoa.ac.in",
+        "Mentor": "Avil D'Sa"
+    },
+    {
+        "Name": "Yolan Fernandes",
+        "RollNumber": 2214078,
+        "Department": "Mechanical Engineering",
+        "CGPA": 7.5,
+        "EmailID": "2214078@dbcegoa.ac.in",
+        "Mentor": "Tanay Rege"
+    },
+    {
+        "Name": "Samuel Miranda",
+        "RollNumber": 2114043,
+        "Department": "Computer Engineering",
+        "CGPA": 5.2,
+        "EmailID": "2114043@dbcegoa.ac.in",
+        "Mentor": "Ankit Tiwari"
+    },
+    {
+        "Name": "Clarita De Souza",
+        "RollNumber": 2314011,
+        "Department": "Civil Engineering",
+        "CGPA": 9.8,
+        "EmailID": "2314011@dbcegoa.ac.in",
+        "Mentor": "Jeffrey Valadares"
+    },
+    {
+        "Name": "Roydon Fernandes",
+        "RollNumber": 2214156,
+        "Department": "Electronics and Telecommunication Engineering",
+        "CGPA": 8.6,
+        "EmailID": "2214156@dbcegoa.ac.in",
+        "Mentor": "Selvyn Fernandes"
+    },
+    {
+        "Name": "Mathias Jordan Fernandes",
+        "RollNumber": 2114030,
+        "Department": "Computer Engineering",
+        "CGPA": 9.4,
+        "EmailID": "2114030@dbcegoa.ac.in",
+        "Mentor": "Norman Dias"
+    },
+    {
+        "Name": "Shane Fernandes",
+        "RollNumber": 2214040,
+        "Department": "Mechanical Engineering",
+        "CGPA": 5.9,
+        "EmailID": "2214040@dbcegoa.ac.in",
+        "Mentor": "Tanay Rege"
+    },
+    {
+        "Name": "Rohan Viegas",
+        "RollNumber": 2314060,
+        "Department": "Civil Engineering",
+        "CGPA": 8.8,
+        "EmailID": "2314044@dbcegoa.ac.in",
+        "Mentor": "Starina Dias"
+    },
+    {
+        "Name": "Sachi Bokade",
+        "RollNumber": 2214233,
+        "Department": "Electronic and Telecommunication Engineering",
+        "CGPA": 6.87,
+        "EmailID": "2214233@dbcegoa.ac.in",
+        "Mentor": "Yeshudas Muttu"
+    },
+    {
+        "Name": "Christie Xaviera Fernandes",
+        "RollNumber": 2114010,
+        "Department": "Computer Engineering",
+        "CGPA": 8.25,
+        "EmailID": "2114010@dbcegoa.ac.in",
+        "Mentor": "Merwyn D'Souza"
+    },
+    {
+        "Name": "Neha Bhandari",
+        "RollNumber": 2214009,
+        "Department": "Mechanical Engineering",
+        "CGPA": 9.2,
+        "EmailID": "2214009@dbcegoa.ac.in",
+        "Mentor": "Sourabh Raikar"
+    },
+    {
+        "Name": "Glory D'Cruz",
+        "RollNumber": 2114019,
+        "Department": "Computer Engineering",
+        "CGPA": 6.8,
+        "EmailID": "2114019@dbcegoa.ac.in",
+        "Mentor": "Norman Dias"
+    },
+    {
+        "Name": "Aditya Patil",
+        "RollNumber": 2124001,
+        "Department": "Computer Engineering",
+        "CGPA": 5.9,
+        "EmailID": "2124001@dbcegoa.ac.in",
+        "Mentor": "Amey Tilve"
+    },
+    {
+        "Name": "Rhys Josmin Rodrigues",
+        "RollNumber": 2114038,
+        "Department": "Computer Engineering",
+        "CGPA": 9.6,
+        "EmailID": "2114038@dbcegoa.ac.in",
+        "Mentor": "Norman Dias"
+    },
+    {
+        "Name": "Navin Morajkar",
+        "RollNumber": 2214046,
+        "Department": "Computer Engineering",
+        "CGPA": 6.5,
+        "EmailID": "2214046@dbcegoa.ac.in",
+        "Mentor": "Amey Kerkar"
+    },
+    {
+        "Name": "Astik Rege",
+        "RollNumber": 2314004,
+        "Department": "Civil Engineering",
+        "CGPA": 5.37,
+        "EmailID": "2314004@dbcegoa.ac.in",
+        "Mentor": "Starina Dias"
+    }
+]
