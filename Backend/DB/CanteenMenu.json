@@ -1,0 +1,42 @@
+{
+    "Food": {
+        "Samosa": {
+            "Price": 20,
+            "Image": "Samosa.jpg"
+        },
+        "Samosa#1": {
+            "Price": 20,
+            "Image": "Samosa.jpg"
+        },
+        "Samosa#2": {
+            "Price": 20,
+            "Image": "Samosa.jpg"
+        },
+        "Samosa#3": {
+            "Price": 20,
+            "Image": "Samosa.jpg"
+        },
+        "Batata Vada": {
+            "Price": 20,
+            "Image": "Samosa.jpg"
+        }
+    },
+    "Drinks": {
+        "Cold": {
+            "Sprite": {
+                "Price": 20
+            },
+            "Pepsi": {
+                "Price": 20
+            }
+        },
+        "Hot": {
+            "Tea": {
+                "Price": 10
+            },
+            "Coffee": {
+                "Price": 10
+            }
+        }
+    }
+}

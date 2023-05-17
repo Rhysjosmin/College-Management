@@ -1,5 +1,13 @@
 # College-Management
 
+## To Run
+```
+CreateEnv.bat
+InitEnv.bat
+StartServer.bat
+```
+
+
 
 Databases We Can Use 
 https://railway.app/
@@ -35,5 +43,6 @@ The FRONTEND
 The 'index.html' is the homepage
 the Pages Folder Contains all the page folders
 in those folders there will be an 'index.html' File,'Scripts' Folder,'Styles' Folder,These are the Local Files Needed For That Page
+
 
 

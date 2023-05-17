@@ -1,0 +1,25 @@
+.item {
+  box-sizing: content-box;
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(221, 221, 221);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.item img {
+  width: 230px;
+  height: 230px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.item h1 {
+  font-family: "Montserrat", sans-serif;
+  height: 60px;
+  font-size: 1.1em;
+}
+
+#Menu {
+  display: grid;
+  grid-template-columns: repeat(4, 25vw);
+}/*# sourceMappingURL=ItemStyle.css.map */

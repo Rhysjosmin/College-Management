@@ -1,0 +1,25 @@
+.item{
+    box-sizing: content-box;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(221, 221, 221);
+    // padding: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    img{
+        width: 230px;
+        height: 230px;
+        object-fit: cover;
+    }
+    h1{
+        font-family: 'Montserrat', sans-serif;
+        height: 60px;
+        font-size: 1.1em;
+        // background: red;
+    }
+}
+#Menu{
+    display: grid;
+    grid-template-columns: repeat(4,25vw);
+}
