@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width:50%;
+    margin: auto;
+    margin-top: 4%;
+    height:100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+body{
+    background-image: url("../smita/image/bgimage.jpg");
+    /* background-color: #cccccc; */
+   }
+
+   .form-box{
+    width:90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: tranlate(-50%,-50%);
+background:#fff;
+padding: 50px 60px 70px;
+text-align: centre;
+}
+.form-box h1{
+    font-size: 30px;
+    margin-bottom: 60px;
+    color: #3c00a0;
+    position: relative;
+}
+form-box h1::after{
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: #3c00a0;
+    position: absolute;
+bottom: -12px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+
+
+.input-field{
+    background: #eaeaea;
+    margin: auto;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    display: flex;
+    align-items: centre;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+}
+.input-field i{
+    margin-left: 15px;
+    color: #999
+}
+
+form p a{
+    text-decoration: none;
+    color: #3c00a0;
+}
+
+.btn-field button{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-field button{
+    background-color: #3c00a0; /* Green */
+    width: 50%;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+  border-radius: 20px;
+  margin-bottom: 2%;
+    /* margin: auto;
+    flex-basis: 48%;
+    background: #3c00a0;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline:0;
+    cursor: pointer;
+    transition: background 1s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block; */
+}
+
+.input-group{
+    height: 280px;
+}
+
+.btn-field buuton.disable{
+    background: #eaeaea;
+    color: #555;
+}

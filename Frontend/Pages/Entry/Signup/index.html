@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In and sign up form </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="../smita/image/bgimage.jpg" ></script> -->
+
+</head>
+<body>
+    <div class="container">
+        <div class="from-box">
+            <h1>sign Up</h1>
+            <form>
+                <div class="input-group">
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-envelop"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="password">
+                </div>
+              <p>lost password <a href="#">click here!</a></p>
+                </div>
+                <div class="btn-field">
+                <button type="button" id="signupbtn" >Sign up</button>
+                <button type="button" id="signinbtn2" class="disable">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+    let signupBtn = document.getElementById("signupBtn");
+    let signinBtn2 = document.getElementById("signinBtn2");
+    let signupBtnameField = document.getElementById("namefield");
+    let title = document.getElementById("title");
+
+
+    signinBtn.onclick = function(){
+        nameField.style.maxHeight="0";
+        title.innerHTML="Sign In";
+        signupBtn.classList.add("disable"); 
+        signupBtn2.classList.remove("disable");
+        }
+
+        signupBtn2.onclick = function(){
+        nameField.style.maxHeight="0";
+        title.innerHTML="Sign up";
+        signupBtn.classList.remove("disable"); 
+        signupBtn2.classList.add("disable");
+        }
+
+
+</script>
+
+
+
+</body>
+
+
+</html>

@@ -1,25 +1,30 @@
-from flask import Blueprint
-import mysql.connector
-
+import json
+from flask import Blueprint,request
+from pymongo import MongoClient
 Login=Blueprint('Login',__name__)
 
+Client = MongoClient("mongodb://localhost:27017/")
+CollegeDB=Client['CollegeDB']
 
-@Login.route('/<StudentName>/<RollNumber>/', methods=['GET'])
-def Login(StudentName, RollNumber):
-    conn = SQL.connect(host='localhost', password='example-password',
-                                 user='abstract-programmer',
-                                 database = 'Student_Verification')
+Users=CollegeDB['Users']
 
-    cursor = conn.cursor()
 
-    query = f"SELECT * FROM Verify_Details WHERE StudentName = {StudentName} AND RollNumber = {RollNumber} "
-    cursor.execute(query)
-    result = cursor.fetchall()
-
-    if result:
-         return({'found':True})
-
+@Login.route('/', methods=['POST'])
+def LoginRoute():
+    Username=request.json.get('Username')
+    Email=request.json.get('Email')
+    Password=request.json.get('Password')
+    print(Username)
+    print(Email)
+    print(Password)
+    Result=Users.find_one({'Username':Username,'Email':Email,'Password':Password})
+    
+    if Result:
+        Result
+        return json.dumps({'Present':'True','UserType':Result['UserType']})
     else:
-        return({'found':False})
+        return json.dumps({'Present':'False'})
+    
+
 
         

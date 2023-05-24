@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In and sign up form</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../../../Styles/FontStyling.css" />
+    <script src="../../../Scripts/Config.js"></script>
+  </head>
+  <body>
+    <div id="LoginWrapper">
+      <h1 id="DBCEH1">Don Bosco College Of Engineering</h1>
+      <div id="Login">
+        <div>
+
+          <div id="form">
+            <input type="text" placeholder="Username" id="Username" />
+            <input type="email" placeholder="Email" id="Email" />
+            <input type="password" placeholder="Password" id="Password" />
+            <button onclick="Login()">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function Login() {
+      const Username_Value = document.getElementById("Username").value;
+      const  Email_Value= document.getElementById("Email").value;
+      const Password_Value = document.getElementById("Password").value;
+
+if (!Email_Value.includes('dbcegoa.ac.in')) return
+      fetch(SERVER_URL + "Login/", {
+        method: "POST",
+        body: JSON.stringify({
+          Username: Username_Value,
+          Email: Email_Value,
+          Password: Password_Value,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+      .then(resp=>resp.json())
+      .then(response=>{
+        console.log(response)
+        if(response.Present=='True'){
+          window.location.replace('../../'+response.UserType+'/?User='+Username_Value)
+        }
+      })
+    }
+  </script>
+</html>

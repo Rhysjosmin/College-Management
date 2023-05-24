@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../../Styles/FontStyling.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../../Scripts/Config.js"></script>
+
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <nav>
+            <a class="material-symbols-outlined" href="../../index.html">chevron_left</a>
+            <h1 class="UserName">Rhys Josmin</h1>
+            <div class="material-symbols-outlined" onclick="ShowMenu()">more_horiz</div>
+    </nav>
+
+    <section id="Profile">
+        <img src="../../Image/Rhys.jpeg" id="ProfilePic">
+        <h1 class="UserName">Rhys Josmin</h1>
+        <h3>Computer Engineering</h3>
+        <h3 id="GPA">GPA:7.3</h3>
+    </section>
+    <main>
+    <h1 style="margin-left: 20px;font-size: 1.3em;">Announcements</h1>
+      <section id="Announcements">
+    </section>  
+  
+    </main>
+    <div id="Menu">
+        <li>Edit Profile</li>
+        <li>Log Out</li>
+    </div>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const User = urlParams.get('User')
+    </script>
+    <script>
+
+
+        const Menu =document.getElementById('Menu')
+        Menu.style.opacity=0
+        let Toggle=0
+function ShowMenu(){
+    console.log(Toggle)
+    Toggle=(Toggle*-1)+1
+    Menu.style.opacity=Toggle
+}
+function back(){
+   window.history.back()
+}
+    </script>
+    <script>
+        const Announcements=document.getElementById('Announcements')
+        fetch(SERVER_URL+'Student/Announcements')
+        .then(r=>r.json())
+        .then(data=>{
+            Items=data.Items
+            Items.forEach(element => {
+     
+               const Announcement=document.createElement('div')
+               Announcement.className='Announcement'
+               Announcement.innerHTML=`
+               <h1>${element}</h1>
+               `
+               Announcements.appendChild(Announcement)
+            });
+        })
+    </script>
+    <script>
+const UserName=document.getElementsByClassName('UserName')
+console.log(UserName[0])
+for (const iterator of UserName) {
+    iterator.innerText=User
+}
+fetch(SERVER_URL+'/UserData/'+User)
+.then(r=>r.json())
+.then(d=>{
+    const GPA=document.getElementById('GPA')
+    GPA.innerText='GPA : '+d.GPA
+
+})
+    </script>
+</body>
+
+</html>
