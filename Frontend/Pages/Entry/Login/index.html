@@ -49,6 +49,9 @@ if (!Email_Value.includes('dbcegoa.ac.in')) return
           window.location.replace('../../'+response.UserType+'/?User='+Username_Value)
         }
       })
+      .catch(e=>{
+        alert(e)
+      })
     }
   </script>
 </html>

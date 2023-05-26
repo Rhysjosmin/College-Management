@@ -1,6 +1,7 @@
 import json
 from flask import Blueprint, request
 from pymongo import MongoClient
+from gridfs import GridFS
 
 from Config import Config
 Student=Blueprint('Student', __name__)
@@ -8,6 +9,7 @@ Student=Blueprint('Student', __name__)
 Client = MongoClient("mongodb://localhost:27017/")
 CollegeDB=Client['CollegeDB']
 
+fs = GridFS(CollegeDB)
 Announcements=CollegeDB['Announcements']
 Users=CollegeDB['Users']
 
@@ -19,6 +21,13 @@ def Add_Details():
     Users.find_one_and_update({'Username': Username}, {'$set': {Param: Value}})
     return 'Added'
 
+@Student.route('/ProfilePic/Add/<Username>',methods=["POST"])
+def AddProfilePic(Username):
+    Image = request.files['Image']
+    Image_Id = fs.put(Image)
+    Users.find_one_and_update({'Username':Username},{'$set':{'Image':Image_Id}})
+    print(Image_Id)
+    return 'Added Profile Picture'
 
 @Student.route('/Announcements')
 def ViewAnnouncements():

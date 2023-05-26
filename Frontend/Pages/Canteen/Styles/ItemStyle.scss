@@ -1,23 +1,32 @@
 .item{
+    position: relative;
+    --w:170px;
     box-sizing: content-box;
-    width: 230px;
+    width: var(--w);
     display: flex;
     flex-direction: column;
     background: rgb(221, 221, 221);
     // padding: 10px;
-    border-radius: 6px;
+    border-radius:6px;
     overflow: hidden;
     img{
-        width: 230px;
-        height: 230px;
+        width: var(--w);
+        height: var(--w);
         object-fit: cover;
     }
     h1{
-        font-family: 'Montserrat', sans-serif;
-        height: 60px;
-        font-size: 1.1em;
-        // background: red;
+        
+        background: linear-gradient(to bottom,rgb(0, 0, 0),rgba(0, 0, 0, 0.579),transparent);
+        color: #ffffff;
+        width: 100%;
+        top: 0;
+        position: absolute;
+        font-family: noto sans;
+        font-weight: 400;
+        padding: 5px;
+        font-size: 1.2em;
     }
+
 }
 #Menu{
     display: flex;

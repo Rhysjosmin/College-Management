@@ -175,3 +175,41 @@ li{
     background: hsl(0, 0%, 97%);
 }
 }
+
+#More{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    a{
+        text-decoration: none;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30vw;
+        height: 30vw;
+        background: hsl(0, 0%, 90%);
+        border-radius: 10px;
+ 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+        span{
+            font-size: 4em;
+            color: rgb(21, 21, 21);
+        }
+        h1{
+            font-family: noto sans;
+            font-weight: 100;
+            font-size: .8em;
+        }
+
+    }
+}

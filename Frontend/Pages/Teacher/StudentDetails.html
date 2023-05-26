@@ -51,14 +51,15 @@
                 <th>RollNumber</th>
                 <th>EmailID</th>
                 <th>Mentor</th>
-                <th>CGPA</th>
+                <th>GPA</th>
             </tr>
         </thead>
         <tbody id="student-table-body"></tbody>
     </table>
     <div id="search-results"></div>
+    <script src="../../Scripts/Config.js"></script>
     <script>
-        fetch('students_data.json')
+        fetch(SERVER_URL+'StudentDetails')
                 .then(response => response.json())
                 .then(data => {
                     const studentTableBody = document.getElementById('student-table-body');
@@ -71,7 +72,7 @@
                     // Add event listener for search input
                     searchInput.addEventListener('input', function () {
                         const searchQuery = searchInput.value.trim().toLowerCase();
-                        const NameVar = data.filter(student => student.Name.toLowerCase().includes(searchQuery));
+                        const NameVar = data.filter(student => student.Username.toLowerCase().includes(searchQuery));
                         populateTable(NameVar);
                     });
                     function populateTable(data) {
@@ -79,7 +80,7 @@
 
                         data.forEach(student => {
                             const row = document.createElement('tr');
-                            row.innerHTML = `<td>${student.Name}</td><td>${student.Department}</td><td>${student.RollNumber}</td><td>${student.EmailID}</td><td>${student.Mentor}</td><td>${student.CGPA}</td>`;
+                            row.innerHTML = `<td>${student.Username}</td><td>${student.Stream}</td><td>${student.RollNumber}</td><td>${student.Email}</td><td>${student.Mentor}</td><td>${student.GPA}</td>`;
                             studentTableBody.appendChild(row);
 
                             // Add click event listener to the row

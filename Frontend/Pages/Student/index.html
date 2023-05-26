@@ -19,26 +19,46 @@
     </nav>
 
     <section id="Profile">
-        <img src="../../Image/Rhys.jpeg" id="ProfilePic">
+        <img src="../../Image/NoProfilePic.jpg" id="ProfilePic">
         <h1 class="UserName">Rhys Josmin</h1>
-        <h3>Computer Engineering</h3>
+        <h3 id="Stream">Computer Engineering</h3>
         <h3 id="GPA">GPA:7.3</h3>
     </section>
     <main>
     <h1 style="margin-left: 20px;font-size: 1.3em;">Announcements</h1>
       <section id="Announcements">
     </section>  
-  
+  <section id="More">
+    <a href="../Canteen/index.html"><span class="material-symbols-outlined">
+        restaurant
+        </span>
+        <h1>Canteen</h1>
+
+    </a>
+    <a href=""><span class="material-symbols-outlined">
+        library_books
+        </span>
+        <h1>Portion</h1>
+    </a>
+   
+
+  </section>
     </main>
     <div id="Menu">
         <li>Edit Profile</li>
         <li>Log Out</li>
     </div>
+
+
+
+
+
     <script>
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const User = urlParams.get('User')
     </script>
+
     <script>
 
 
@@ -73,15 +93,23 @@ function back(){
     </script>
     <script>
 const UserName=document.getElementsByClassName('UserName')
-console.log(UserName[0])
+
 for (const iterator of UserName) {
     iterator.innerText=User
 }
 fetch(SERVER_URL+'/UserData/'+User)
 .then(r=>r.json())
 .then(d=>{
-    const GPA=document.getElementById('GPA')
-    GPA.innerText='GPA : '+d.GPA
+    console.log(d)
+   
+    document.getElementById('GPA').innerText='GPA : '+d.GPA
+    document.getElementById('Stream').innerText=d.Stream
+
+    fetch(SERVER_URL+'GetImage/'+d.Image.$oid)
+    .then(r=>r.json())
+    .then(Image=>{
+        document.getElementById('ProfilePic').src='data:image/jpeg;base64,'+Image.$binary.base64
+    })
 
 })
     </script>
