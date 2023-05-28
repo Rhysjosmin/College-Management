@@ -1,10 +1,11 @@
 import json
+
 from flask import Blueprint, request
 from pymongo import MongoClient
 from gridfs import GridFS
-
 from Config import Config
 Student=Blueprint('Student', __name__)
+import pandas as pd
 
 Client = MongoClient("mongodb://localhost:27017/")
 CollegeDB=Client['CollegeDB']
@@ -43,7 +44,35 @@ def Add_All_Details():
     }})
     return "Added"
 
+@Student.route('/Details/Add/CSV',methods=['POST'])
+def Details_From_CSV():
+    file = request.files['file']
+    print(file.mimetype)
+  
+    if(file.mimetype=='text/csv'):
+        Already=[]
+        df = pd.read_csv(file,encoding='latin-1')
+        values = df.values.tolist()
+        for User in values:
+            if(not(Users.find_one({'Username':User[0]}))):
+                Users.insert_one({
+                    "Username":User[0],
+                    "RollNumber":User[1],
+                    "Department":User[2],
+                    "Year":User[3],
+                    "Mentor":User[4],
+                    "CGPA":User[5],
+                    "SGPA":User[6],
+                    "Email":User[7],
+                    "Password":User[8],
+                    "UserType":User[9],                
+                })
+            else:
+                Already.append(User[0])
+        
+        return json.dumps(Already)
 
+    return 'Fail'
 
 @Student.route('/ProfilePic/Add/<Username>',methods=["POST"])
 def AddProfilePic(Username):

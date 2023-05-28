@@ -4,54 +4,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../../Styles/FontStyling.css"> -->
+    <link rel="stylesheet" href="../../Styles/FontStyling.css">
    
-    // LATEST tag
-    <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/file-uploader.min.js"></script>
+    <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/version/v1.27.0/notification.min.js"></script>
+
+    <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/version/v1.27.0/data-table.min.js"></script>
+
     <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/button.min.js"></script>
+    <script src="../../Scripts/Config.js"></script>
     <title>Admin</title>
 </head>
 <body>
     <aside>
         <ul>
-            <li><a href="">Add Announcement</a></li>
-            <li><a href="">Create User</a></li>
-            <li><a href="">Update User</a></li>
+            <li><div onclick="ChangePage('ADD_USER_DETAILS_PAGE')">User Details</div></li>
+            <li><div onclick="ChangePage('ADD_ANNOUNCEMENTS_DETAILS_PAGE')">Add Announcement</div></li>
         </ul>
     </aside>
     <main>
-        <section>
-    
-            <bx-file-uploader
-  helper-text="Only CSV Files"
-  label-text="Student Data"
->
-  <bx-file-drop-container accept="image/jpeg image/png" multiple="true">
-    Drag and drop files here or click to upload
-  </bx-file-drop-container>
-</bx-file-uploader>
-<bx-btn onclick="SubmitCSV()"> Button </bx-btn>
-            <script>
-                function SubmitCSV(){
-                File=document.getElementById('csvFile').value
-                fetch(SERVER_URL+"/Student/Add/CSV",{
-                    method:"POST",
-                    body:{
-                        "File":File
-                    }
-                })
-                
-                }
-            </script>
-        </section>
+
     </main>
 </body>
+<script src="./Pages/ViewStudents/Scripts/MakeList.js"></script>
+<script src="./Components/app.js"></script>
+<script>
+MakeList()
+    document.getElementsByTagName('main')[0].innerHTML=User_Details+Announcements+Update_User
+for (let index = 0; index < document.getElementsByTagName('main')[0].children.length; index++) {
+        element=document.getElementsByTagName('main')[0].children[index]
+      
+        element.style.display='none'
+    }
+    ChangePage('ADD_USER_DETAILS_PAGE')
+   function ChangePage(Page){
+    for (let index = 0; index < document.getElementsByTagName('main')[0].children.length; index++) {
+        element=document.getElementsByTagName('main')[0].children[index]
+      
+        element.style.display='none'
+    }
+    document.getElementById(Page).style.display='block'
+    }
+</script>
+
+<style>
+    #csvFile{
+    border: 1.6px dashed gray;
+    padding: 30px;
+    margin-bottom: 6px;
+    
+    }
+    #csvFile::file-selector-button{
+    border: none;
+    background: transparent;
+    }
+    </style>
+    <style>
+        #TableView{
+            width: 570px;
+            height: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-top: 7px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        
+        }
+        #TableView ul{
+            padding: 10px;
+            background: rgb(233, 233, 233);
+            display: grid;
+            grid-template-columns:150px 70px 70px 180px 100px;
+        }
+        #TableView li{
+            font-family: 'noto sans';
+            font-size: .9em;
+            color: rgb(63, 63, 63);
+            text-align: left;
+            list-style: none;
+        }
+    </style>
 <style>
 
     *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+    body{
+
+        overflow-x: hidden;
     }
     main{
         position: absolute;
@@ -73,14 +115,15 @@
     aside li{
         margin-bottom: 3px;
     }
-    aside a{
-        font-size: .8em;
+    aside a,aside div{
+        cursor: default;
+        font-size: .9em;
         font-family: 'noto sans';
         text-decoration: none;
         color: rgb(255, 255, 255);
         padding: 2px;
     }
-    aside a:hover{
+    aside a:hover,aside div:hover{
         background: rgb(174, 93, 255);
     }
 </style>

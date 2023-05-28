@@ -1,20 +1,25 @@
 
-const Students = document.getElementById('Students')
-StudentTemplate = document.getElementById('StudentTemplate')
-
 
 StudentArray = [];
+function MakeList(){
 fetch(SERVER_URL + "/StudentDetails")
     .then((response) => response.json())
     .then((data) => {
+        console.log(data)
         data.forEach((element) => {
-            content = StudentTemplate.content.cloneNode(true)
-            console.log(element)
-            content.getElementById('RollNumber').innerText = element['RollNumber']
-            content.getElementById('Name').innerText =element['Username']
-            content.getElementById('Year').innerText = element['Year']
-            content.getElementById('Department').innerText = element['Stream']
-            content.getElementById('Mentor').innerText = element['Mentor']
-            Students.appendChild(content)
+            console.log(element['Username'])
+            const Row = document.createElement('div')
+            Row.innerHTML=`
+            <ul>
+            <li>${element['Username']}</li>
+            <li>${element['RollNumber']}</li>
+            <li>${element['Department']}</li>
+            <li>${element['Email']}</li>
+            <li>${element['Mentor']}</li>
+            </ul>
+            `
+         
+            document.getElementById('TableView').append(Row)
         });
     });
+}
