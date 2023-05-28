@@ -21,6 +21,30 @@ def Add_Details():
     Users.find_one_and_update({'Username': Username}, {'$set': {Param: Value}})
     return 'Added'
 
+
+
+@Student.route('/Details/Add/All',methods=['POST'])
+def Add_All_Details():
+    Username=request.json.get('Username')
+    RollNumber=request.json.get('RollNumber')
+    Mentor=request.json.get('Mentor')
+    Department=request.json.get('Department')
+    Year=request.json.get('Year')
+    CGPA=request.json.get('CGPA')
+    SGPA=request.json.get('SGPA')
+    
+    Users.find_one_and_update({'Username': Username}, {'$set': {
+        'RollNumber':RollNumber,
+        'Mentor':Mentor,
+        'Department':Department,
+        'Year':Year,
+        'CGPA':CGPA,
+        'SGPA':SGPA
+    }})
+    return "Added"
+
+
+
 @Student.route('/ProfilePic/Add/<Username>',methods=["POST"])
 def AddProfilePic(Username):
     Image = request.files['Image']

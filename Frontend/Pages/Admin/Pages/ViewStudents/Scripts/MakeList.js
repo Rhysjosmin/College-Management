@@ -4,18 +4,17 @@ StudentTemplate = document.getElementById('StudentTemplate')
 
 
 StudentArray = [];
-fetch(SERVER_URL + "/Student/List")
+fetch(SERVER_URL + "/StudentDetails")
     .then((response) => response.json())
     .then((data) => {
         data.forEach((element) => {
             content = StudentTemplate.content.cloneNode(true)
-
-            content.getElementById('RollNumber').innerText = element[0]
-            content.getElementById('Name').innerText =element[1]
-            content.getElementById('Year').innerText = element[2]
-            content.getElementById('Department').innerText = element[3]
-            content.getElementById('Mentor').innerText = element[4]
+            console.log(element)
+            content.getElementById('RollNumber').innerText = element['RollNumber']
+            content.getElementById('Name').innerText =element['Username']
+            content.getElementById('Year').innerText = element['Year']
+            content.getElementById('Department').innerText = element['Stream']
+            content.getElementById('Mentor').innerText = element['Mentor']
             Students.appendChild(content)
-
         });
     });
