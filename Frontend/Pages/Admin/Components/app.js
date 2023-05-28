@@ -23,10 +23,19 @@ Announcements = `<section id="ADD_ANNOUNCEMENTS_DETAILS_PAGE">
     <h2>Announcements</h2>
     <p style="font-family: 'noto sans';font-size: .9em;color: rgb(89, 89, 89);margin-bottom: 6px;">Only .csv and .json files. 500kb max file size</p>
  
-    <input type="text" name="" accept="text/csv" enctype="multipart/form-data">
+    <bx-input>
+  <span slot="label-text">Title</span>
+  <span slot="validity-message">Something isn't right</span>
+</bx-input>
+<bx-textarea placeholder="Enter your announcement here.." rows="4" cols="50">
+<span slot="label-text">Announcement</span>
+<span slot="helper-text"></span>
+<span slot="validity-message">Something isn't right</span>
+</bx-textarea>
+ 
 </div>
 
-<bx-btn onclick="SubmitCSV()"> Update Database </bx-btn>
+<bx-btn onclick="SubmitAnnouncement()"> Post Announcement </bx-btn>
 
 
 </section>
@@ -37,11 +46,7 @@ Update_User = `<section id="UPDATE_USER_DETAILS_PAGE">
     <h2>Update User</h2>
     <p style="font-family: 'noto sans';font-size: .9em;color: rgb(89, 89, 89);margin-bottom: 6px;">Only .csv and .json files. 500kb max file size</p>
  
-    <bx-input>
-    <span slot="label-text">Label text</span>
-    <span slot="helper-text">Optional helper text</span>
-    <span slot="validity-message">Something isn't right</span>
-  </bx-input>
+   
 </div>
 
 <bx-btn onclick="SubmitCSV()"> Update Database </bx-btn>
