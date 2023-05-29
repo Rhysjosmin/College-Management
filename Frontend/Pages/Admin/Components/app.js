@@ -23,11 +23,11 @@ Announcements = `<section id="ADD_ANNOUNCEMENTS_DETAILS_PAGE">
     <h2>Announcements</h2>
     <p style="font-family: 'noto sans';font-size: .9em;color: rgb(89, 89, 89);margin-bottom: 6px;">Only .csv and .json files. 500kb max file size</p>
  
-    <bx-input>
+    <bx-input id="Announcement_Title_input">
   <span slot="label-text">Title</span>
   <span slot="validity-message">Something isn't right</span>
 </bx-input>
-<bx-textarea placeholder="Enter your announcement here.." rows="4" cols="50">
+<bx-textarea id = "Announcement_Message_input" placeholder="Enter your announcement here.." rows="4" cols="50">
 <span slot="label-text">Announcement</span>
 <span slot="helper-text"></span>
 <span slot="validity-message">Something isn't right</span>
@@ -90,3 +90,34 @@ try {
     
   
 }
+
+function SubmitAnnouncement() {
+
+try {
+
+
+        let formData = new FormData();
+        formData.append("Title", document.getElementById('Announcement_Title_input'));
+        formData.append("Body", document.getElementById('Announcement_Message_input'));
+    
+        fetch(SERVER_URL + "Announcement/Add", {
+          method: "POST",
+          body: formData,
+        })
+        .then(r=>r.json())
+        .then(d=>{
+        
+            Notification('Updated',File.name,'success')
+     
+        })
+      
+
+    
+  
+}
+
+// Admin.route('/Announcement/Add',methods=['POST'])
+// def AddAnnouncement():
+//     Title=request.json.get('Title')
+//     Announcements.insert_one({'Title':Title})
+//     return 'Done'
