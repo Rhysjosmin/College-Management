@@ -1,4 +1,4 @@
-SERVER_URL = "http://127.0.0.1:5000/";
+SERVER_URL = "http://127.0.0.1:4000/";
 function hexToBase64(str) {
   return btoa(
     String.fromCharCode.apply(

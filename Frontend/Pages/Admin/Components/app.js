@@ -23,11 +23,11 @@ Announcements = `<section id="ADD_ANNOUNCEMENTS_DETAILS_PAGE">
     <h2>Announcements</h2>
     <p style="font-family: 'noto sans';font-size: .9em;color: rgb(89, 89, 89);margin-bottom: 6px;">Only .csv and .json files. 500kb max file size</p>
  
-    <bx-input>
+    <bx-input id='Announcement_Title_input'>
   <span slot="label-text">Title</span>
   <span slot="validity-message">Something isn't right</span>
 </bx-input>
-<bx-textarea placeholder="Enter your announcement here.." rows="4" cols="50">
+<bx-textarea placeholder="Enter your announcement here.." rows="4" cols="50" id="Announcement_Message_input">
 <span slot="label-text">Announcement</span>
 <span slot="helper-text"></span>
 <span slot="validity-message">Something isn't right</span>
@@ -87,6 +87,38 @@ try {
     },4000)
 }
   
+    
+  
+}
+
+function SubmitAnnouncement() {
+
+const Title= document.getElementById('Announcement_Title_input').value
+const Body= document.getElementById('Announcement_Message_input').value
+
+//        let formData = new FormData();
+//        formData.append("Title",Title);
+//        formData.append("Body",Body);
+console.log(Title,Body)
+ const data = {
+    "Title": Title,
+    "Body": Body
+  };
+console.log(data)
+console.log(JSON.stringify(data))
+    
+       fetch(SERVER_URL + "Admin/Announcement/Add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+        .then(r=>{
+Notification('Updated',File.name,'success')
+})
+      
+
     
   
 }

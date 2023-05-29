@@ -55,6 +55,6 @@ def getImage(ImageID):
 def StudentDetails():
     return json_util.dumps(Users.find({ "UserType": "Student"}))
 if __name__ =="__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=6500)
 
 
