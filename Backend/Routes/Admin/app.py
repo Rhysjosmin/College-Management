@@ -47,7 +47,12 @@ def insertInStudentDB(CSV):
 
 @Admin.route('/Announcement/Add',methods=['POST'])
 def AddAnnouncement():
-    Title=request.form.get('Title')
-    Body=request.form.get('Body')
+
+    Title=request.json.get('Title')
+    Body=request.json.get('Body')
+
     Announcements.insert_one({'Title':Title,'Body':Body})
+
+
     return 'Done'
+
