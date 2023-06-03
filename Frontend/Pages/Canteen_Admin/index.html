@@ -43,6 +43,7 @@ function Expand(e){
        
         const OrderListItem=document.createElement('div')
         OrderListItem.className='OrderListItem'
+        OrderListItem.classList.add('Expand')
         OrderListItem.innerHTML=`
         <div><h1>${order.Name}</h1><span class="material-symbols-outlined" onclick="Expand(this)">expand_more</span></div>
        <ul>${OrdersList.innerHTML}</ul>

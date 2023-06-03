@@ -60,7 +60,7 @@
 }
 
 .OrderListItem {
-  --radius:8px;
+  --radius:1px;
   border-radius: var(--radius);
   overflow: hidden;
   -webkit-user-select: none;
@@ -69,7 +69,7 @@
   width: 300px;
 }
 .OrderListItem div {
-  background: #bcbcbc;
+  background: #f0f0f0;
   display: flex;
   align-items: center;
   padding: 6px;
@@ -86,7 +86,7 @@
   border-radius: 100%;
 }
 .OrderListItem div span:hover {
-  background: #5795f2;
+  background: #d4e0f3;
 }
 .OrderListItem ul {
   transform-origin: 0 0;

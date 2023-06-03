@@ -64,7 +64,7 @@ button{
     gap: 3px;
    }
 .OrderListItem{
-    --radius:8px;
+    --radius:1px;
 border-radius:var(--radius);
 overflow: hidden;
     user-select: none;
@@ -72,7 +72,7 @@ overflow: hidden;
     width: 300px;
     div{
 
-        background: #bcbcbc;
+        background: #f0f0f0;
         // width: 90%;
         display: flex;
         align-items: center;
@@ -88,7 +88,7 @@ overflow: hidden;
             padding: 3px;
             border-radius: 100%;
             &:hover{
-                background: #5795f2;
+                background: #d4e0f3;
             }
         }
     }

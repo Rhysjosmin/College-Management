@@ -9,38 +9,43 @@
     <link rel="stylesheet" href="style.css">
     <script src="../../Scripts/Config.js"></script>
 
-    <title>Teacher Dashboard</title>
+    <title>Student Dashboard</title>
 </head>
 <body>
     <nav>
-            <a class="material-symbols-outlined" href="../../index.html">chevron_left</a>
+            <!-- <a class="material-symbols-outlined" href="../../index.html"></a> -->
             <h1 class="UserName"></h1>
-            <div class="material-symbols-outlined" onclick="ShowMenu()">more_horiz</div>
+            <!-- <div class="material-symbols-outlined" onclick="ShowMenu()">more_horiz</div> -->
     </nav>
 
     <section id="Profile">
-        <img src="../../Image/NoProfilePic.jpg" id="ProfilePic">
+        
+        <input type="file" name="ProfilePicInput" id="ProfilePicInput" accept="image/*">
+        <label for="ProfilePicInput"><img src="../../Image/NoProfilePic.jpg" id="ProfilePic"></label>
+        
         <h1 class="UserName"></h1>
-        <h1 id="Specialization"></h1>
-    
+        <h3 id="Stream"></h3>
 
+        
     </section>
     <main>
     <h1 style="margin-left: 20px;font-size: 1.3em;">Announcements</h1>
       <section id="Announcements">
     </section>  
   <section id="More">
-    <a href="../Canteen/index.html"><span class="material-symbols-outlined">
+
+
+    <a onclick="window.location='../Canteen/index.html'+window.location.search;"><span class="material-symbols-outlined">
         restaurant
         </span>
         <h1>Canteen</h1>
 
     </a>
-    <a href="StudentDetails.html"><span class="material-symbols-outlined">
+    <!-- <a href=""><span class="material-symbols-outlined">
         library_books
         </span>
-        <h1>Student Details</h1>
-    </a>
+        <h1>Portion</h1>
+    </a> -->
    
 
   </section>
@@ -54,11 +59,7 @@
 
 
 
-    <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const User = urlParams.get('User')
-    </script>
+
 
     <script>
 
@@ -80,13 +81,14 @@ function back(){
         fetch(SERVER_URL+'Student/Announcements')
         .then(r=>r.json())
         .then(data=>{
-            Items=data.Items
+            Items=data
+            console.log(Items)
             Items.forEach(element => {
      
                const Announcement=document.createElement('div')
                Announcement.className='Announcement'
                Announcement.innerHTML=`
-               <h1>${element}</h1>
+               <h1>${element.Title}</h1><h4>${element.Body}</h4>
                `
                Announcements.appendChild(Announcement)
             });
@@ -102,16 +104,35 @@ fetch(SERVER_URL+'/UserData/'+User)
 .then(r=>r.json())
 .then(d=>{
     console.log(d)
-    
-    document.getElementById('Specialization').innerText=d.Specialization
+   
 
-    fetch(SERVER_URL+'GetImage/'+d.Image.$oid)
+    document.getElementById('Stream').innerText=d.Department
+    console.log()
+    const ImageID=d.Image.$oid
+
+    fetch(SERVER_URL+'GetImage/'+ImageID)
     .then(r=>r.json())
     .then(Image=>{
         document.getElementById('ProfilePic').src='data:image/jpeg;base64,'+Image.$binary.base64
     })
 
 })
+    </script>
+    <script>
+        const ProfilePicInput=document.getElementById('ProfilePicInput')
+        ProfilePicInput.addEventListener('change',()=>{
+            console.log(ProfilePicInput.files[0])
+            let data=new FormData
+            data.append('Image',ProfilePicInput.files[0])
+            fetch(SERVER_URL+'Student/ProfilePic/Add/'+User,
+            {
+                method:'POST',
+                body:data
+            }).then(r=>r.json())
+            .then(()=>{
+                location.reload();  
+            })
+        })
     </script>
 </body>
 

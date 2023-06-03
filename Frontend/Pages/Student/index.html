@@ -14,7 +14,7 @@
 <body>
     <nav>
             <!-- <a class="material-symbols-outlined" href="../../index.html"></a> -->
-            <h1 class="UserName">Rhys Josmin</h1>
+            <h1 class="UserName"></h1>
             <!-- <div class="material-symbols-outlined" onclick="ShowMenu()">more_horiz</div> -->
     </nav>
 
@@ -23,10 +23,10 @@
         <input type="file" name="ProfilePicInput" id="ProfilePicInput" accept="image/*">
         <label for="ProfilePicInput"><img src="../../Image/NoProfilePic.jpg" id="ProfilePic"></label>
         
-        <h1 class="UserName">Rhys Josmin</h1>
-        <h3 id="Stream">Computer Engineering</h3>
-        <div id="GPA"><h3 id="CGPA">GPA:7.3</h3>
-        <h3 id="SGPA">GPA:7.3</h3></div>
+        <h1 class="UserName"></h1>
+        <h3 id="Stream"></h3>
+        <div id="GPA"><h3 id="CGPA"></h3>
+        <h3 id="SGPA"></h3></div>
         
     </section>
     <main>
@@ -34,17 +34,17 @@
       <section id="Announcements">
     </section>  
   <section id="More">
-    <a href="../Canteen/index.html"><span class="material-symbols-outlined">
+    <a onclick="window.location='../Canteen/index.html'+window.location.search;"><span class="material-symbols-outlined">
         restaurant
         </span>
         <h1>Canteen</h1>
 
     </a>
-    <a href=""><span class="material-symbols-outlined">
+    <!-- <a href=""><span class="material-symbols-outlined">
         library_books
         </span>
         <h1>Portion</h1>
-    </a>
+    </a> -->
    
 
   </section>
@@ -58,11 +58,7 @@
 
 
 
-    <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const User = urlParams.get('User')
-    </script>
+
 
     <script>
 

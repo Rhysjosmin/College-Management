@@ -59,8 +59,6 @@ def ModifyItem():
 def PlaceOrder():
     Order=request.form.get('Items')
     Name=request.form.get('Name')
-    print(Order)
-    print(Name)
     CanteenOrderDB.insert_one({'Name':Name,"Order":Order})
     return json.dumps({'Response':'OK'})
 
