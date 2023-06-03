@@ -70,7 +70,9 @@
 }
 
 .OrderListItem {
-  min-height: 40px;
+  transition: 0.2s;
+  min-height: 200px;
+  overflow-y: scroll;
   --radius:1px;
   border-radius: var(--radius);
   overflow: hidden;
@@ -100,14 +102,18 @@
   background: #d4e0f3;
 }
 .OrderListItem ul {
+  overflow-y: scroll;
+  height: 200px;
   transform-origin: 0 0;
-  background: #dddddd;
+  background: #d2d2d2;
   padding: 10px;
-  transition: 0.3s ease;
   list-style: none;
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
+.Expand {
+  min-height: 40px;
+}
 .Expand ul {
   height: 0px;
   scale: 1 0;

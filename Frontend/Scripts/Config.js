@@ -6,10 +6,10 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const User = urlParams.get('User')
 
-// if(User==null){
-//   console.log(window.location.origin)
-//   window.location.replace(window.location.origin+'/Frontend')
-// }
+if(User==null){
+  console.log(window.location.origin)
+  window.location.replace(window.location.origin+'/Frontend')
+}
 
 function hexToBase64(str) {
   return btoa(

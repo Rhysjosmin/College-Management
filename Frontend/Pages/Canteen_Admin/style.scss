@@ -72,8 +72,9 @@ button{
     background: #aeaeae;
 }
 .OrderListItem{
-  
-    min-height: 40px;
+  transition: .2s;
+    min-height: 200px;
+    overflow-y: scroll;
     --radius:1px;
 border-radius:var(--radius);
 overflow: hidden;
@@ -103,17 +104,20 @@ overflow: hidden;
         }
     }
     ul{
-     
+        overflow-y: scroll;
+ 
+        height: 200px;
         transform-origin: 0 0;
 
-        background: #dddddd;
+        background: #d2d2d2;
         padding: 10px;
-        transition:  .3s ease;
         list-style: none;
         border-radius: 0 0 var(--radius) var(--radius);
     }
 }
     .Expand{
+        min-height: 40px;
+
         ul{
             height: 0px;
             scale: 1 0;
