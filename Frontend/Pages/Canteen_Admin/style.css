@@ -51,6 +51,8 @@
 }
 
 #Orders {
+  height: 90vh;
+  overflow: scroll;
   position: fixed;
   right: 10px;
   top: 10px;
@@ -59,7 +61,16 @@
   gap: 3px;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aeaeae;
+}
+
 .OrderListItem {
+  min-height: 40px;
   --radius:1px;
   border-radius: var(--radius);
   overflow: hidden;
