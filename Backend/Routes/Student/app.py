@@ -3,6 +3,7 @@ import json
 from flask import Blueprint, request
 from pymongo import MongoClient
 from gridfs import GridFS
+from bson import json_util
 from Config import Config
 Student=Blueprint('Student', __name__)
 import pandas as pd
@@ -76,17 +77,24 @@ def Details_From_CSV():
 
 @Student.route('/ProfilePic/Add/<Username>',methods=["POST"])
 def AddProfilePic(Username):
+    R=Users.find_one({'Username':Username})
+    print(R)
+    try:
+        if(R['Image']):
+            print(R['Image'])
+            fs.delete(R['Image'])
+    except:
+        pass
     Image = request.files['Image']
     Image_Id = fs.put(Image)
     Users.find_one_and_update({'Username':Username},{'$set':{'Image':Image_Id}})
-    print(Image_Id)
-    return 'Added Profile Picture'
+    return json_util.dumps({"Response":'Added Image Successfully',"Image":'Image_Id'})
 
 @Student.route('/Announcements')
 def ViewAnnouncements():
     Announcement_List=Announcements.find()
     List=[]
     for Item in Announcement_List:
-        List.append(Item['Title'])
-    print(List)
-    return json.dumps({'Items':List})
+        List.append({'Title':Item['Title'],'Body':Item['Body']})
+    # print(List)
+    return json.dumps(List)

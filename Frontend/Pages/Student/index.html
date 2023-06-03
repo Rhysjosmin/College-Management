@@ -13,16 +13,21 @@
 </head>
 <body>
     <nav>
-            <a class="material-symbols-outlined" href="../../index.html">chevron_left</a>
+            <!-- <a class="material-symbols-outlined" href="../../index.html"></a> -->
             <h1 class="UserName">Rhys Josmin</h1>
-            <div class="material-symbols-outlined" onclick="ShowMenu()">more_horiz</div>
+            <!-- <div class="material-symbols-outlined" onclick="ShowMenu()">more_horiz</div> -->
     </nav>
 
     <section id="Profile">
-        <img src="../../Image/NoProfilePic.jpg" id="ProfilePic">
+        
+        <input type="file" name="ProfilePicInput" id="ProfilePicInput" accept="image/*">
+        <label for="ProfilePicInput"><img src="../../Image/NoProfilePic.jpg" id="ProfilePic"></label>
+        
         <h1 class="UserName">Rhys Josmin</h1>
         <h3 id="Stream">Computer Engineering</h3>
-        <h3 id="GPA">GPA:7.3</h3>
+        <div id="GPA"><h3 id="CGPA">GPA:7.3</h3>
+        <h3 id="SGPA">GPA:7.3</h3></div>
+        
     </section>
     <main>
     <h1 style="margin-left: 20px;font-size: 1.3em;">Announcements</h1>
@@ -79,13 +84,14 @@ function back(){
         fetch(SERVER_URL+'Student/Announcements')
         .then(r=>r.json())
         .then(data=>{
-            Items=data.Items
+            Items=data
+            console.log(Items)
             Items.forEach(element => {
      
                const Announcement=document.createElement('div')
                Announcement.className='Announcement'
                Announcement.innerHTML=`
-               <h1>${element}</h1>
+               <h1>${element.Title}</h1><h4>${element.Body}</h4>
                `
                Announcements.appendChild(Announcement)
             });
@@ -102,16 +108,35 @@ fetch(SERVER_URL+'/UserData/'+User)
 .then(d=>{
     console.log(d)
    
-    document.getElementById('GPA').innerText='GPA : '+d.GPA
-    document.getElementById('Stream').innerText=d.Stream
+    document.getElementById('CGPA').innerText='CGPA : '+d.CGPA
+    document.getElementById('SGPA').innerText='SGPA : '+d.SGPA
+    document.getElementById('Stream').innerText=d.Department
+    console.log()
+    const ImageID=d.Image.$oid
 
-    fetch(SERVER_URL+'GetImage/'+d.Image.$oid)
+    fetch(SERVER_URL+'GetImage/'+ImageID)
     .then(r=>r.json())
     .then(Image=>{
         document.getElementById('ProfilePic').src='data:image/jpeg;base64,'+Image.$binary.base64
     })
 
 })
+    </script>
+    <script>
+        const ProfilePicInput=document.getElementById('ProfilePicInput')
+        ProfilePicInput.addEventListener('change',()=>{
+            console.log(ProfilePicInput.files[0])
+            let data=new FormData
+            data.append('Image',ProfilePicInput.files[0])
+            fetch(SERVER_URL+'Student//ProfilePic/Add/'+User,
+            {
+                method:'POST',
+                body:data
+            }).then(r=>r.json())
+            .then(()=>{
+                location.reload();  
+            })
+        })
     </script>
 </body>
 

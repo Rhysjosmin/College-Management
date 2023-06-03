@@ -1,15 +1,19 @@
 User_Details = `<section id="ADD_USER_DETAILS_PAGE">
-<div style="font-family: 'noto serif';">
+<div style="display:flex;gap:20px;font-family: 'noto serif';">
+<div>
+<div >
     <h2>User Details</h2>
     <p style="font-family: 'noto sans';font-size: .9em;color: rgb(89, 89, 89);margin-bottom: 6px;">Only .csv and .json files. 500kb max file size</p>
  
     <input type="file" name="" id="csvFile" accept="text/csv" enctype="multipart/form-data">
 </div>
+<a href="./Media/CSV/Users.csv">Template</a>
+<br>
 
 <bx-btn onclick="SubmitCSV()"> Update Database </bx-btn>
-<br>
-<br>
-<br>
+</div>
+
+</div>
 <h2>Users</h2>
 
 <section id="TableView">
@@ -38,7 +42,9 @@ Announcements = `<section id="ADD_ANNOUNCEMENTS_DETAILS_PAGE">
 </div>
 
 <bx-btn onclick="SubmitAnnouncement()"> Post Announcement </bx-btn>
+<section id="AnnouncementView">
 
+</section>
 
 </section>
 `;
@@ -52,6 +58,18 @@ Update_User = `<section id="UPDATE_USER_DETAILS_PAGE">
 </div>
 
 <bx-btn onclick="SubmitCSV()"> Update Database </bx-btn>
+
+
+</section>`;
+
+DB_PAGE = `<section id="DB_PAGE">
+<div style="font-family: 'noto serif';">
+    <h2>Modify Database</h2>
+ 
+   
+</div>
+
+<bx-btn onclick="DeleteDB(DB)"> Delete Database </bx-btn>
 
 
 </section>`;
@@ -118,7 +136,8 @@ console.log(JSON.stringify(data))
     body: JSON.stringify(data)
   })
         .then(r=>{
-Notification('Updated',File.name,'success')
+          MakeListAnnouncements()
+Notification('Announcement Made','👌','success')
 })
 
       

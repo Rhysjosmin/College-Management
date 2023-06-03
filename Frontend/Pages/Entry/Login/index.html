@@ -30,7 +30,11 @@
       const  Email_Value= document.getElementById("Email").value;
       const Password_Value = document.getElementById("Password").value;
 
-if (!Email_Value.includes('dbcegoa.ac.in')) return
+if (!Email_Value.includes('dbcegoa.ac.in')) {
+  Notification('Updated',File.name,'success')
+  console.log('error')
+  return
+}
       fetch(SERVER_URL + "Login/", {
         method: "POST",
         body: JSON.stringify({

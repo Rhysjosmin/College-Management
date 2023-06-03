@@ -12,6 +12,7 @@ Client = MongoClient("mongodb://localhost:27017/")
 CollegeDB=Client['CollegeDB']
 fs = GridFS(CollegeDB)
 CanteenDB=CollegeDB['CanteenDB']
+CanteenOrderDB=CollegeDB['CanteenOrderDB']
 
 
 Canteen=Blueprint('Canteen', __name__)
@@ -24,8 +25,10 @@ def Menu():
 
 @Canteen.route('/AddItem',methods=["POST"])
 def AddItem():
-    Name=request.json.get('Name')
-    Price=request.json.get('Price')
+    # Name=request.json.get('Name')
+    # Price=request.json.get('Price')
+    Name=request.form.get('Name')
+    Price=request.form.get('Price')
     # Image=request.files['Image']
     # Image_Id = fs.put(Image)
     CanteenDB.insert_one({
@@ -33,12 +36,16 @@ def AddItem():
             "Price": Price
         })
     return 'Added Item'
-@Canteen.route('/AddImage/<Name>',methods=["POST"])
 
+
+@Canteen.route('/AddImage/<Name>',methods=["POST"])
 def AddImage(Name):
     Image=request.files['Image']
     Image_Id=fs.put(Image)
-    CanteenDB.find_one_and_update({'Name':Name},{'$set':{'Image':Image_Id}})
+    CanteenDB.find_one_and_update({'Name':Name},{'$set':{'Image_ID':Image_Id}})
+    return 'Done'
+
+
 @Canteen.route('/RemoveItem')
 def RemoveItem():
     # Has To Have Key to Remove
@@ -47,3 +54,17 @@ def RemoveItem():
 @Canteen.route('/ModifyItem')
 def ModifyItem():
     return 'Modified Item'
+
+@Canteen.route('/Placeorder',methods=["POST"])
+def PlaceOrder():
+    Order=request.form.get('Items')
+    Name=request.form.get('Name')
+    print(Order)
+    print(Name)
+    CanteenOrderDB.insert_one({'Name':Name,"Order":Order})
+    return json.dumps({'Response':'OK'})
+
+@Canteen.route('/SeeOrders')
+def SeeOrders():
+    Orders=CanteenOrderDB.find()
+    return json_util.dumps(Orders)

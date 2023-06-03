@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+#AddMenuItemForm {
+  outline: 1px solid rgba(128, 128, 128, 0.348);
+  margin: 10px;
+  background: hsl(0, 0%, 91%);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 6px;
+  align-items: center;
+}
+#AddMenuItemForm h1 {
+  font-size: 1.3em;
+  text-align: left;
+  width: 290px;
+  font-weight: 400;
+}
+#AddMenuItemForm input {
+  min-height: 30px;
+  width: 290px;
+  border: none;
+  padding: 5px;
+}
+#AddMenuItemForm button {
+  background: #1363DF;
+  border: none;
+  width: 290px;
+  height: 35px;
+  color: white;
+  text-align: left;
+  padding: 10px;
+}
+#AddMenuItemForm button:hover {
+  background: #2073f0;
+}
+
+#MenuImageUpload {
+  border: 1.6px dashed gray !important;
+  padding: 20px !important;
+  margin-bottom: 6px;
+}
+#MenuImageUpload::file-selector-button {
+  border: none;
+  background: transparent;
+}
+
+#Orders {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.OrderListItem {
+  --radius:8px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: 300px;
+}
+.OrderListItem div {
+  background: #bcbcbc;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  justify-content: space-between;
+}
+.OrderListItem div h1 {
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: "noto sans";
+}
+.OrderListItem div span {
+  transition: background-color 0.2s;
+  padding: 3px;
+  border-radius: 100%;
+}
+.OrderListItem div span:hover {
+  background: #5795f2;
+}
+.OrderListItem ul {
+  transform-origin: 0 0;
+  background: #dddddd;
+  padding: 10px;
+  transition: 0.3s ease;
+  list-style: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.Expand ul {
+  height: 0px;
+  scale: 1 0;
+  display: none;
+}/*# sourceMappingURL=style.css.map */

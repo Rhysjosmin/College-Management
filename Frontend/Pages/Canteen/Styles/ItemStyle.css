@@ -1,4 +1,5 @@
 .item {
+  filter: saturate(0);
   position: relative;
   --w:170px;
   box-sizing: content-box;
@@ -8,6 +9,7 @@
   background: rgb(221, 221, 221);
   border-radius: 6px;
   overflow: hidden;
+  transition: scale 0.2s;
 }
 .item img {
   width: var(--w);
@@ -25,10 +27,43 @@
   font-weight: 400;
   padding: 5px;
   font-size: 1.2em;
+  transition: 0.3s;
+  height: 30px;
+}
+.item:hover {
+  scale: 1.02;
+}
+.item:hover h1 {
+  height: 40px;
 }
 
 #Menu {
   display: flex;
-  gap: 6px;
+  gap: 18px;
   flex-wrap: wrap;
+}
+
+.SelectedItem {
+  outline: 2px solid rgb(43, 226, 131);
+  filter: saturate(1);
+}
+
+#PlaceOrder {
+  font-family: "IBM Plex Serif", serif;
+  font-size: 1em;
+  font-weight: 200;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  text-align: left;
+  padding: 10px;
+  border: none;
+  background: #1363DF;
+  color: white;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+#PlaceOrder:hover {
+  background: #3683f8;
 }/*# sourceMappingURL=ItemStyle.css.map */

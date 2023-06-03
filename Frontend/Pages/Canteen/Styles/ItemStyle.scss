@@ -1,4 +1,6 @@
 .item{
+    filter: saturate(0);
+
     position: relative;
     --w:170px;
     box-sizing: content-box;
@@ -14,6 +16,7 @@
         height: var(--w);
         object-fit: cover;
     }
+    transition: scale .2s;
     h1{
         
         background: linear-gradient(to bottom,rgb(0, 0, 0),rgba(0, 0, 0, 0.579),transparent);
@@ -25,11 +28,46 @@
         font-weight: 400;
         padding: 5px;
         font-size: 1.2em;
+        transition: .3s;
+        height: 30px;
+    }
+    &:hover{
+        h1{
+            height: 40px;
+        }
+        scale: 1.02;
+        
     }
 
 }
 #Menu{
     display: flex;
-    gap: 6px;
+    gap: 18px;
     flex-wrap: wrap;
+}
+
+.SelectedItem{
+    outline: 2px solid rgb(43, 226, 131);
+    filter: saturate(1);
+}
+
+#PlaceOrder{
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 1em;
+    font-weight: 200;
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+//    height: 40px;
+   width: 200px;
+   text-align: left;
+   padding: 10px;
+   border: none;
+   background: #1363DF;
+   color: white;
+   border-radius: 8px;
+   transition: background-color .2s;
+   &:hover{
+    background: #3683f8;
+   }
 }

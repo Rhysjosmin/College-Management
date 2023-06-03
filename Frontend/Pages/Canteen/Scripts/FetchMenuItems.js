@@ -1,22 +1,53 @@
-const MenuItemTemplate = document.getElementById('MenuItemTemplate')
+
+let CART=[]
 
 let MediaFolder='Media/'
-function AddtoMenu(Name,Image){
-    const MenuItem=MenuItemTemplate.content.cloneNode(true)
-MenuItem.children[0].children[0].src=MediaFolder+Image
-MenuItem.children[0].children[1].innerText=Name
-document.getElementById('Menu').appendChild(MenuItem)
-}
+function AddtoMenu(Name,ImageID){
 
+    fetch(SERVER_URL+'GetImage/'+ImageID)
+    .then(r=>r.json())
+    .then(Image=>{
+      const item=document.createElement('div')
+      item.className='item'
+      item.innerHTML=`<img src="${'data:image/jpeg;base64,'+Image.$binary.base64}" alt="">
+      <h1>${Name}</h1>`
+      item.onclick=()=>{
+         item.classList.toggle('SelectedItem')
+         if (CART.includes(Name)){
+            CART=CART.filter(function (letter) {
+               return letter !== Name;
+           });
+     
+
+         }else{
+  
+            CART.push(Name)
+         }
+         // console.log(CART)
+      }
+      document.getElementById('Menu').appendChild(item)
+    
+    })
+
+}
+function AddToCart(ItemName){
+
+console.log(CART)
+}
 fetch(SERVER_URL+'/Canteen/Menu')
 .then(R=>R.json())
 .then(data=>{
-   return data.Food
+   console.log(data)
+   return data
 })
 .then(FoodMenu=>{
-   for (const key in FoodMenu) {
-    Name=key.split('#')[0]
-    console.log(Name)
-    AddtoMenu(Name,FoodMenu[key].Image)
-   }
+   FoodMenu.forEach(element => {
+      try {
+         AddtoMenu(element.Name,element.Image_ID.$oid)
+      } catch (error) {
+         console.log(error)
+      }
+      
+   });
+
 })

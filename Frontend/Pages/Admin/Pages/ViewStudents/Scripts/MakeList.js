@@ -23,3 +23,25 @@ fetch(SERVER_URL + "/StudentDetails")
         });
     });
 }
+
+// AnnouncementView
+function MakeListAnnouncements(){
+fetch(SERVER_URL + "Student/Announcements")
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById('AnnouncementView').innerHTML=''
+        data.forEach((element) => {
+
+            const Row = document.createElement('div')
+            Row.innerHTML=`
+            <ul>
+            <li>${element['Title']}</li>
+            <li>${element['Body']}</li>
+
+            </ul>
+            `
+         
+            document.getElementById('AnnouncementView').append(Row)
+        });
+    });
+}

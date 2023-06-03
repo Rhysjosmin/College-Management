@@ -1,5 +1,15 @@
 
-SERVER_URL = "http://127.0.0.1:4000/";
+const SERVER_URL = "http://127.0.0.1:5001/";
+
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const User = urlParams.get('User')
+
+// if(User==null){
+//   console.log(window.location.origin)
+//   window.location.replace(window.location.origin+'/Frontend')
+// }
 
 function hexToBase64(str) {
   return btoa(
@@ -15,6 +25,7 @@ function hexToBase64(str) {
 }
 
 function Notification(Message, SubMessage,kind) {
+  console.log('dfs')
   E = `<bx-inline-notification
     style="min-width: 30rem; margin-bottom: .5rem"
     title="${Message}"
@@ -27,6 +38,7 @@ kind='${kind}'
   const notify = document.createElement("div");
   notify.innerHTML = E;
   notify.style.position = "fixed";
+  
   notify.style.bottom = "10px";
   notify.style.right = "-10000px";
 

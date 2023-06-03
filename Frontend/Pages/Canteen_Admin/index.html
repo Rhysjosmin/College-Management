@@ -4,9 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Canteen Admin</title>
+   
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-  
+  <div id="AddMenuItemForm">
+    <h1>Add Item</h1>
+    <input type="text" placeholder="Name" id="ItemName">
+  <input type="text" placeholder="Price" inputmode="numeric" id="ItemPrice">
+  <input type="file" name="" id="MenuImageUpload" accept="image/*" enctype="multipart/form-data">
+<button onclick="AddItem()">Add Item To Menu</button>
+  </div>
+  <div id="Orders">
+
+  </div>
 </body>
+<script src="../../Scripts/Config.js"></script>
+<script>
+SeeOrders()
+function Expand(e){
+  e.parentElement.parentElement.classList.toggle('Expand')
+}
+  function SeeOrders(){
+    fetch(SERVER_URL+'Canteen/SeeOrders')
+    .then(r=>r.json())
+    .then(orders=>{
+      orders.forEach(order => {
+        console.log(order.Name)
+        console.log(order.Order)
+        const OrdersList=document.createElement('ul')
+        order.Order.split(',').forEach(item=>{
+          const ListItem= document.createElement('li')
+          ListItem.innerHTML=item
+          OrdersList.append(ListItem)
+        })
+       
+        const OrderListItem=document.createElement('div')
+        OrderListItem.className='OrderListItem'
+        OrderListItem.innerHTML=`
+        <div><h1>${order.Name}</h1><span class="material-symbols-outlined" onclick="Expand(this)">expand_more</span></div>
+       <ul>${OrdersList.innerHTML}</ul>
+        `
+        document.getElementById('Orders').append(OrderListItem)
+      });
+   
+    })
+  }
+function AddItem(){
+  const ItemName=document.getElementById('ItemName').value
+const ItemPrice=document.getElementById('ItemPrice').value 
+let formData=new FormData
+
+formData.append('Name',ItemName) 
+formData.append('Price',ItemPrice) 
+
+fetch(SERVER_URL+'Canteen/AddItem',{
+    method:"POST",
+    body:formData
+}).then(r=>{
+  var formdata = new FormData();
+formdata.append("Image", document.getElementById('MenuImageUpload').files[0]);
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+
+};
+
+fetch(SERVER_URL+"Canteen/AddImage/"+ItemName, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}).finally(()=>{
+  alert('Added')
+})
+}
+
+
+</script>
+
 </html>

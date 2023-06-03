@@ -1,4 +1,3 @@
-import json
 from flask import Flask
 from bson import json_util,ObjectId
 from flask_cors import CORS
@@ -19,20 +18,15 @@ app.register_blueprint(Admin,url_prefix='/Admin')
 app.register_blueprint(Login,url_prefix='/Login')
 app.register_blueprint(Signup,url_prefix='/Signup')
 
-
 Client = MongoClient("mongodb://localhost:27017/")
 
 CollegeDB=Client['CollegeDB']
 fs = GridFS(CollegeDB)
 Users=CollegeDB['Users']
 
-
-
-
 @app.route('/')
 def Menu():
     return ''
-
 
 @app.route('/DeleteCollection/<Collection>',methods=['GET'])
 def DeleteCollection(Collection):
@@ -46,9 +40,7 @@ def getUserData(Username):
 
 @app.route('/GetImage/<ImageID>',methods=['GET'])
 def getImage(ImageID):
-
-    Data=fs.get(ObjectId(ImageID)).read()
- 
+    Data=fs.get(ObjectId(ImageID)).read() 
     return json_util.dumps(Data)
 
 @app.route('/StudentDetails')

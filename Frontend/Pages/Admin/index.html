@@ -20,6 +20,7 @@
         <ul>
             <li><div onclick="ChangePage('ADD_USER_DETAILS_PAGE')">User Details</div></li>
             <li><div onclick="ChangePage('ADD_ANNOUNCEMENTS_DETAILS_PAGE')">Add Announcement</div></li>
+            <li><div onclick="ChangePage('DB_PAGE')">Modify Databases</div></li>
         </ul>
     </aside>
     <main>
@@ -29,15 +30,17 @@
 <script src="./Pages/ViewStudents/Scripts/MakeList.js"></script>
 <script src="./Components/app.js"></script>
 <script>
+    MakeListAnnouncements()
 MakeList()
-    document.getElementsByTagName('main')[0].innerHTML=User_Details+Announcements+Update_User
+    document.getElementsByTagName('main')[0].innerHTML=User_Details+Announcements+Update_User+DB_PAGE
 for (let index = 0; index < document.getElementsByTagName('main')[0].children.length; index++) {
         element=document.getElementsByTagName('main')[0].children[index]
       
         element.style.display='none'
     }
-    ChangePage('ADD_USER_DETAILS_PAGE')
+    ChangePage(localStorage.getItem("Page"))
    function ChangePage(Page){
+    localStorage.setItem("Page", Page);
     for (let index = 0; index < document.getElementsByTagName('main')[0].children.length; index++) {
         element=document.getElementsByTagName('main')[0].children[index]
       
@@ -60,7 +63,7 @@ for (let index = 0; index < document.getElementsByTagName('main')[0].children.le
     }
     </style>
     <style>
-        #TableView{
+        #TableView,#AnnouncementView{
             width: 570px;
             height: 300px;
             overflow-y: scroll;
@@ -71,13 +74,13 @@ for (let index = 0; index < document.getElementsByTagName('main')[0].children.le
             gap: 2px;
         
         }
-        #TableView ul{
+        #TableView ul,#AnnouncementView ul{
             padding: 10px;
             background: rgb(233, 233, 233);
             display: grid;
             grid-template-columns:150px 70px 70px 180px 100px;
         }
-        #TableView li{
+        #TableView li,#AnnouncementView li{
             font-family: 'noto sans';
             font-size: .9em;
             color: rgb(63, 63, 63);
