@@ -36,11 +36,56 @@ nav li a {
 }
 
 main {
-  overflow-x: hidden;
-}
-main img {
   height: 100vh;
   width: 100vw;
+  /* background-color: #e5e5f7; */
+  opacity: 1;
+  background-image: radial-gradient(#444cf7 1.35px, #e5e5f7 1.35px);
+  background-size: 27px 27px;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+main div {
+  margin-top: 5rem;
+  width: 90vw;
+  max-height: 90vh;
+  display: grid;
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+  place-content: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+main img {
+  padding: 3px;
+  border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+main img:nth-child(1) {
+  width: 90vw;
+  height: 40vh;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+main img:nth-child(2) {
+  width: 45vw;
+  height: 42vh;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+main img:nth-child(3) {
+  width: 45vw;
+  height: 42vh;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 6;
 }/*# sourceMappingURL=style.css.map */

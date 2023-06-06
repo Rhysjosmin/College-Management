@@ -14,7 +14,9 @@ User_Details = `<section id="ADD_USER_DETAILS_PAGE">
 </div>
 
 </div>
-<h2>Users</h2>
+<br>
+
+<h2>Students</h2>
 
 <section id="TableView">
 

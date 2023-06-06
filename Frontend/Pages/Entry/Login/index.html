@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In and sign up form</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="../../../Styles/FontStyling.css" />
     <script src="../../../Scripts/Config.js"></script>
+    <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/version/v1.27.0/notification.min.js"></script>
+
   </head>
   <body>
     <div id="LoginWrapper">
@@ -29,10 +31,11 @@
       const Username_Value = document.getElementById("Username").value;
       const  Email_Value= document.getElementById("Email").value;
       const Password_Value = document.getElementById("Password").value;
-
-if (!Email_Value.includes('dbcegoa.ac.in')) {
-  Notification('Updated',File.name,'success')
-  console.log('error')
+if(Username_Value.replace(/ /g,'')=='' || Email_Value.replace(/ /g,'')=='' || Password_Value.replace(/ /g,'')==''){
+  Notification('Incomplete Form','Recheck if you have filled all the entries','error')
+}
+if (!Email_Value.includes('dbcegoa.ac.in') && Email_Value.replace(/ /g,'')!='' && Username_Value.replace(/ /g,'')!='' && Password_Value.replace(/ /g,'')!='') {
+  Notification('Email Error','Email Should Belong to dbcegoa.ac.in','error')
   return
 }
       fetch(SERVER_URL + "Login/", {
@@ -51,11 +54,15 @@ if (!Email_Value.includes('dbcegoa.ac.in')) {
         console.log(response)
         if(response.Present=='True'){
           window.location.replace('../../'+response.UserType+'/?User='+Username_Value)
+        }else{
+        Notification('Error','Wrong Username Email Or Password','error')
+
         }
+      }).catch((e)=>{
+        Notification('Email Error',e,'error')
+
       })
-      .catch(e=>{
-        alert(e)
-      })
+     
     }
   </script>
 </html>

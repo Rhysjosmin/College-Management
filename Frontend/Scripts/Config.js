@@ -25,7 +25,6 @@ function hexToBase64(str) {
 }
 
 function Notification(Message, SubMessage,kind) {
-  console.log('dfs')
   E = `<bx-inline-notification
     style="min-width: 30rem; margin-bottom: .5rem"
     title="${Message}"

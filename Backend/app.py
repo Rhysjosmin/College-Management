@@ -1,4 +1,5 @@
-from flask import Flask
+import json
+from flask import Flask, url_for
 from bson import json_util,ObjectId
 from flask_cors import CORS
 from gridfs import GridFS
@@ -24,9 +25,26 @@ CollegeDB=Client['CollegeDB']
 fs = GridFS(CollegeDB)
 Users=CollegeDB['Users']
 
+
+def has_no_empty_params(rule):
+    defaults = rule.defaults if rule.defaults is not None else ()
+    arguments = rule.arguments if rule.arguments is not None else ()
+    return len(defaults) >= len(arguments)
+
+
 @app.route('/')
-def Menu():
-    return ''
+def index():
+    links = []
+    l=[]
+    for rule in app.url_map.iter_rules():
+        l.append(rule.endpoint)
+        if "GET" in rule.methods and has_no_empty_params(rule):
+            url = url_for(rule.endpoint, **(rule.defaults or {}))
+            links.append(f'<a href="{url}">{rule.endpoint}</a>')
+    string = ''
+    for link in links:
+        string = string+link+'</br>'
+    return json.dumps(l)
 
 @app.route('/DeleteCollection/<Collection>',methods=['GET'])
 def DeleteCollection(Collection):
