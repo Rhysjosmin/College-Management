@@ -131,4 +131,30 @@ for (let index = 0; index < document.getElementsByTagName('main')[0].children.le
         background: rgb(174, 93, 255);
     }
 </style>
+<style>
+    #DatabasesList{
+        cursor: default;
+        padding-block: 10px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    #DatabasesList li{
+        height: 30px;
+        width: 300px;
+        background: hsl(0, 0%, 91%);
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        /* border-radius: 6px; */
+    transition: .1s;
+    }
+    #DatabasesList li:hover{
+       filter: brightness(.9);
+    }
+    #DatabasesList li:nth-child(even){
+        background: hsl(201, 27%, 88%);
+    }
+</style>
 </html>

@@ -67,17 +67,32 @@ Update_User = `<section id="UPDATE_USER_DETAILS_PAGE">
 DB_PAGE = `<section id="DB_PAGE">
 <div style="font-family: 'noto serif';">
     <h2>Modify Database</h2>
- 
-   
+    <bx-input placeholder="Database Name" id="DataBaseToDelete">
 </div>
-
-<bx-btn onclick="DeleteDB(DB)"> Delete Database </bx-btn>
+<bx-btn onclick="DeleteDB()">Delete Database</bx-btn>
+<li id='DatabasesList'>
+</li>
 
 
 </section>`;
-
-
-
+showDB()
+function showDB(){
+fetch(`${SERVER_URL}/Databases`).then(r=>r.json())
+.then(data=>{
+  document.getElementById('DatabasesList').innerHTML=''
+  console.log(data)
+  data.forEach(element => {
+  document.getElementById('DatabasesList').innerHTML+=`<li>${element}</li>`
+    
+  });
+})
+}
+function DeleteDB(){
+const DataBaseToDelete = document.getElementById('DataBaseToDelete').value
+fetch(`${SERVER_URL}/DeleteCollection/${DataBaseToDelete}`).then(r=>{
+  showDB()
+})
+}
 
 function SubmitCSV() {
   File = document.getElementById("csvFile").files[0];

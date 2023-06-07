@@ -46,6 +46,10 @@ def index():
         string = string+link+'</br>'
     return json.dumps(l)
 
+@app.route('/Databases')
+def Databases():
+    return json.dumps(CollegeDB.list_collection_names())
+
 @app.route('/DeleteCollection/<Collection>',methods=['GET'])
 def DeleteCollection(Collection):
     CollegeDB.drop_collection(Collection)
